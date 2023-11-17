@@ -41,7 +41,7 @@ export class OvernightPage implements OnInit {
   recordValue() {
     // Create new data of type StanfordSleepinessData and add to 
     console.log("here in record value", this.goToSleepTime, this.wakeUpTime)
-    let sleepData: OvernightSleepData = new OvernightSleepData(this.goToSleepTime, this.wakeUpTime);
+    let sleepData: OvernightSleepData = new OvernightSleepData(new Date(this.goToSleepTime), new Date(this.wakeUpTime));
     this.sleepService.logOvernightData(sleepData);
     // return this.modalController.dismiss(null, 'automatic');
 

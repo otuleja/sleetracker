@@ -34,5 +34,19 @@
       </ion-card-content>
     </ion-card>
   </ion-grid>
+  <ion-grid>
+    <div>Overnight data</div>
+    <ion-card *ngFor="let overnightData of overnightSleepDataArray" color="secondary">
+      <ion-card-header>
+        <!-- <ion-card-subtitle>{{stanfordData.titleString}}</ion-card-subtitle> -->
+        <ion-card-title>{{overnightData.summaryString()}}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        {{overnightData.dateString()}}
+      </ion-card-content>
+    </ion-card>
+
+  </ion-grid>
 
 </ion-content>
