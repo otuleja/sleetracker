@@ -11,6 +11,11 @@ const routes: Routes = [
     loadChildren: () => import('./modals/sleepiness/sleepiness.module').then(m => m.SleepinessPageModule)
   },
   {
+    path: "overnight",
+    loadChildren: () => import('./modals/overnight/overnight.module').then(m => m.OvernightPageModule)
+  },
+
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
