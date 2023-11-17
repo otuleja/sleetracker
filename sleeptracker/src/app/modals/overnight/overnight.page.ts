@@ -8,11 +8,11 @@ import { ModalController } from '@ionic/angular';
 // import { ToastController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-sleepiness',
-  templateUrl: './sleepiness.page.html',
+  selector: 'app-overnight',
+  templateUrl: './overnight.page.html',
   // styleUrls: ['./sleepiness.page.scss'],
 })
-export class SleepinessPage implements OnInit {
+export class OvernightPage implements OnInit {
 
   level: number = 1;
 

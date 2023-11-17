@@ -5,7 +5,7 @@ import { OvernightSleepData } from '../data/overnight-sleep-data';
 import { StanfordSleepinessData } from '../data/stanford-sleepiness-data';
 import { ModalController } from '@ionic/angular';
 import { SleepinessPage } from '../modals/sleepiness/sleepiness.page';
-
+import { OvernightPage } from '../modals/overnight/overnight.page';
 @Component({
 	selector: 'app-home',
 	templateUrl: 'home.page.html',
@@ -46,6 +46,16 @@ export class HomePage {
 		});
 	}
 	async showOvernightModal() {
+		const modal = await this.mc.create({
+			component: OvernightPage
+		});
+
+		return await modal.present().then(async _ => {
+			const { data, role } = await modal.onWillDismiss();
+			this.processData()
+
+		});
+
 
 	}
 	get allSleepData() {

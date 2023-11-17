@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { SleepinessPageRoutingModule } from './sleepiness-routing.module';
+import { OvernightPageRoutingModule } from './overnight-routing.module';
 
-import { SleepinessPage } from './sleepiness.page';
+import { OvernightPage } from './overnight.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SleepinessPageRoutingModule
+    OvernightPageRoutingModule
   ],
-  declarations: [SleepinessPage]
+  declarations: [OvernightPage]
 })
-export class SleepinessPageModule { }
+export class OvernightPageModule { }
