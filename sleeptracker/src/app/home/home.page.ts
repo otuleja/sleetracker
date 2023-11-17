@@ -41,6 +41,7 @@ export class HomePage {
 		return await modal.present().then(async _ => {
 			// triggered when opening the modal
 			const { data, role } = await modal.onWillDismiss();
+			this.processData()
 
 		});
 	}
