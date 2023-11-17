@@ -12,12 +12,21 @@ import { SleepinessPage } from '../modals/sleepiness/sleepiness.page';
 	styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-
+	standfordSleepinessArray: SleepData[] = [];
+	overnightSleepDataArray: SleepData[] = [];
 	constructor(public sleepService: SleepService, private mc: ModalController) {
 	}
 
 	ngOnInit() {
 		console.log(this.allSleepData);
+		this.processData();
+	}
+
+	processData() {
+		const stanfordSleepinessArray = this.allSleepData.filter((sleepData) => sleepData instanceof StanfordSleepinessData);
+		const overnightSleepDataArray = this.allSleepData.filter((sleepData) => sleepData instanceof OvernightSleepData);
+		this.standfordSleepinessArray = stanfordSleepinessArray;
+		this.overnightSleepDataArray = overnightSleepDataArray;
 	}
 	async passSleep() {
 		const modal = await this.mc.create({

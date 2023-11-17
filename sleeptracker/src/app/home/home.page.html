@@ -19,5 +19,17 @@
       </ion-button>
     </ion-row>
   </ion-grid>
+  <ion-grid>
+    <ion-card *ngFor="let stanfordData of standfordSleepinessArray" color="secondary">
+      <ion-card-header>
+        <!-- <ion-card-subtitle>{{stanfordData.titleString}}</ion-card-subtitle> -->
+        <ion-card-title>{{stanfordData.summaryString()}}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        {{stanfordData.dateString()}}
+      </ion-card-content>
+    </ion-card>
+  </ion-grid>
 
 </ion-content>
