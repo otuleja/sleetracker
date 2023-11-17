@@ -27,6 +27,8 @@ export class HomePage {
 		const overnightSleepDataArray = this.allSleepData.filter((sleepData) => sleepData instanceof OvernightSleepData);
 		this.standfordSleepinessArray = stanfordSleepinessArray;
 		this.overnightSleepDataArray = overnightSleepDataArray;
+		console.log(this.allSleepData);
+
 	}
 	async passSleep() {
 		const modal = await this.mc.create({

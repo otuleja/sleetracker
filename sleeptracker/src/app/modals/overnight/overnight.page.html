@@ -5,7 +5,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar style="--background: rgb(9, 18, 33)">
     <ion-title>
-      Log Sleepiness
+      Log Overnight Data
     </ion-title>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
@@ -14,14 +14,22 @@
 </ion-header>
 <ion-content>
   <div>
-    <h2>How sleepy are you?</h2>
+    <h2>When did you sleep?</h2>
   </div>
   <div class="">
-    <ion-range class="sleepMeter" [(ngModel)]="level" min="1" max="7" step="1" snaps="true" ticks="true" pin="true"
-      color="primary">
-      <ion-label slot="start">1</ion-label>
-      <ion-label slot="end">7</ion-label>
-    </ion-range>
+    <div class="option-container" size="5">
+      <h1>Sleep Time</h1>
+      <ion-datetime display-format="MMM DD, YY HH:mm" [(ngModel)]="goToSleepTime">
+      </ion-datetime>
+
+    </div>
+
+    <div class="option-container" size="5">
+      <h1>Wake Time</h1>
+      <ion-datetime display-format="MMM DD, YY HH:mm" [(ngModel)]="wakeUpTime">
+      </ion-datetime>
+    </div>
+
   </div>
   <div style="text-align: center">
     <ion-button (click)="recordValue()" color="secondary">Log</ion-button>
