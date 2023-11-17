@@ -4,6 +4,7 @@ import { SleepService } from '../../services/sleep.service';
 // import { OvernightSleepData } from '../data/overnight-sleep-data';
 import { StanfordSleepinessData } from '../../data/stanford-sleepiness-data';
 import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 // import { ToastController } from '@ionic/angular';
 
 @Component({
@@ -18,6 +19,7 @@ export class SleepinessPage implements OnInit {
 
   constructor
     (private sleepService: SleepService, private route: Router,
+      private modalController: ModalController
       // public toastController: ToastController
     ) { }
   ngOnInit() { }
@@ -30,13 +32,17 @@ export class SleepinessPage implements OnInit {
   //   toast.present();
   // 	}
 
+  dismissModal() {
+    console.log("should dismiss")
+    return this.modalController.dismiss(null, 'manual');
+  }
   // 	// Record value once user prompts
   recordValue() {
     // Create new data of type StanfordSleepinessData and add to 
     this.sleepService.logSleepinessData(new StanfordSleepinessData(this.level, new Date()));
-    console.log("success")
     // console.log(this.allSleepData);
     // this.presentToast();
+    return this.modalController.dismiss(null, 'automatic');
 
     // Go back to home page and display modal to confirm success
     // this.route.navigate(['/home']);

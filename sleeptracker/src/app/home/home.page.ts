@@ -29,8 +29,10 @@ export class HomePage {
 		//   Storage.set({key:dataReturned.data.id, value: JSON.stringify(dataReturned.data)}).then();
 		// });
 
-		return await modal.present().then(_ => {
+		return await modal.present().then(async _ => {
 			// triggered when opening the modal
+			const { data, role } = await modal.onWillDismiss();
+
 		});
 	}
 	/* Ionic doesn't allow bindings to static variables, so this getter can be used instead. */
