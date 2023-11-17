@@ -4,19 +4,19 @@ import { OvernightSleepData } from '../data/overnight-sleep-data';
 import { StanfordSleepinessData } from '../data/stanford-sleepiness-data';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class SleepService {
-	private static LoadDefaultData:boolean = true;
-	public static AllSleepData:SleepData[] = [];
-	public static AllOvernightData:OvernightSleepData[] = [];
-	public static AllSleepinessData:StanfordSleepinessData[] = [];
+	private static LoadDefaultData: boolean = true;
+	public static AllSleepData: SleepData[] = [];
+	public static AllOvernightData: OvernightSleepData[] = [];
+	public static AllSleepinessData: StanfordSleepinessData[] = [];
 
 	constructor() {
-		if(SleepService.LoadDefaultData) {
+		if (SleepService.LoadDefaultData) {
 			this.addDefaultData();
-		SleepService.LoadDefaultData = false;
-	}
+			SleepService.LoadDefaultData = false;
+		}
 	}
 
 	private addDefaultData() {
@@ -25,12 +25,13 @@ export class SleepService {
 		this.logOvernightData(new OvernightSleepData(new Date('February 20, 2021 23:11:00'), new Date('February 21, 2021 08:03:00')));
 	}
 
-	public logOvernightData(sleepData:OvernightSleepData) {
+	public logOvernightData(sleepData: OvernightSleepData) {
 		SleepService.AllSleepData.push(sleepData);
 		SleepService.AllOvernightData.push(sleepData);
 	}
 
-	public logSleepinessData(sleepData:StanfordSleepinessData) {
+	public logSleepinessData(sleepData: StanfordSleepinessData) {
+		console.log("here in log sleepiness data", sleepData)
 		SleepService.AllSleepData.push(sleepData);
 		SleepService.AllSleepinessData.push(sleepData);
 	}

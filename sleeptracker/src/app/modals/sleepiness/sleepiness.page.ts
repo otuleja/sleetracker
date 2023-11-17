@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-// import { SleepService } from '../services/sleep.service';
+import { SleepService } from '../../services/sleep.service';
 // import { SleepData } from '../data/sleep-data';
 // import { OvernightSleepData } from '../data/overnight-sleep-data';
-// import { StanfordSleepinessData } from '../data/stanford-sleepiness-data';
-// import { Router } from '@angular/router';
+import { StanfordSleepinessData } from '../../data/stanford-sleepiness-data';
+import { Router } from '@angular/router';
 // import { ToastController } from '@ionic/angular';
 
 @Component({
@@ -17,9 +17,9 @@ export class SleepinessPage implements OnInit {
 
 
   constructor
-    (
-    // private sleepService:SleepService, private route: Router, public toastController: ToastController
-  ) { }
+    (private sleepService: SleepService, private route: Router,
+      // public toastController: ToastController
+    ) { }
   ngOnInit() { }
 
   // async presentToast() {
@@ -31,16 +31,17 @@ export class SleepinessPage implements OnInit {
   // 	}
 
   // 	// Record value once user prompts
-  // 	recordValue(){
-  // 		// Create new data of type StanfordSleepinessData and add to 
-  // 	this.sleepService.logSleepinessData(new StanfordSleepinessData(this.level, new Date()));
-  // 	console.log(this.allSleepData);
-  // 	this.presentToast();
+  recordValue() {
+    // Create new data of type StanfordSleepinessData and add to 
+    this.sleepService.logSleepinessData(new StanfordSleepinessData(this.level, new Date()));
+    console.log("success")
+    // console.log(this.allSleepData);
+    // this.presentToast();
 
-  // 	// Go back to home page and display modal to confirm success
-  // 	this.route.navigate(['/home']);
+    // Go back to home page and display modal to confirm success
+    // this.route.navigate(['/home']);
 
-  // }
+  }
 
   // get allSleepData() {
   // 	return SleepService.AllSleepData;

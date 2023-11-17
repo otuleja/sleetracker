@@ -12,3 +12,18 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+<ion-content>
+  <div>
+    <h2>How sleepy are you?</h2>
+  </div>
+  <div class="">
+    <ion-range class="sleepMeter" [(ngModel)]="level" min="1" max="7" step="1" snaps="true" ticks="true" pin="true"
+      color="primary">
+      <ion-label slot="start">1</ion-label>
+      <ion-label slot="end">7</ion-label>
+    </ion-range>
+  </div>
+  <div style="text-align: center">
+    <ion-button (click)="recordValue()" color="secondary">Log</ion-button>
+  </div>
+</ion-content>
