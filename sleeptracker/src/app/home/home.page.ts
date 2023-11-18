@@ -18,8 +18,9 @@ export class HomePage {
 	}
 
 	ngOnInit() {
-		console.log(this.allSleepData);
-		this.processData();
+		setTimeout(() => {
+			this.processData();
+		}, 50)
 	}
 
 	processData() {
@@ -27,8 +28,6 @@ export class HomePage {
 		const overnightSleepDataArray = this.allSleepData.filter((sleepData) => sleepData instanceof OvernightSleepData);
 		this.standfordSleepinessArray = stanfordSleepinessArray;
 		this.overnightSleepDataArray = overnightSleepDataArray;
-		console.log(this.allSleepData);
-
 	}
 	async passSleep() {
 		const modal = await this.mc.create({
@@ -61,6 +60,8 @@ export class HomePage {
 
 	}
 	get allSleepData() {
+		console.log(this.sleepService.getEverything())
+		// return this.sleepService.getEverything();
 		return SleepService.AllSleepData;
 	}
 

@@ -27,24 +27,38 @@ export class SleepService {
 		// this.logOvernightData(new OvernightSleepData(new Date('February 20, 2021 23:11:00'), new Date('February 21, 2021 08:03:00')));
 
 		Preferences.keys().then((data) => {
-			console.log("data from load", data)
-			// data.keys.forEach(x => {
-			//   Storage.get({key: x}).then((result) =>{
-			//     var dt = JSON.parse(result.value);
-			//     if (dt.titleString === "Overnight Sleep"){
-			//       var temp = new OvernightSleepData(new Date(dt.sleepStart), new Date(dt.sleepEnd));
-			//       console.log(temp.sortDate);
-			//       this.allSleepData.push(temp);
-			//     } else {
-			//       var tmp = new StanfordSleepinessData(dt.loggedValue, new Date(dt.loggedAt));
-			//       console.log(tmp.sortDate);
-			//       this.allSleepData.push(tmp);
-			//     }
+			data.keys.forEach(x => {
+				console.log("ley", x)
 
-			//   })
+
+
+
+				Preferences.get({ key: x }).then((result: any) => {
+					var dt = JSON.parse(result.value);
+					console.log("dt", dt)
+					if (dt.sleepStart) {
+						var temp = new OvernightSleepData(new Date(dt.sleepStart), new Date(dt.sleepEnd), new Date(dt.loggedAt));
+						// console.log(temp.sortDate);
+						SleepService.AllSleepData.push(temp);
+					} else {
+						// var tmp = new StanfordSleepinessData(dt.loggedValue, new Date(dt.loggedAt));
+						// console.log(tmp.sortDate);
+						// this.allSleepData.push(tmp);
+					}
+
+				})
+
+
+
+
+
+
+			})
 		});
 	}
-
+	public getEverything() {
+		return SleepService.AllSleepData
+	}
 	public logOvernightData(sleepData: OvernightSleepData) {
 		console.log("adding sleep data", sleepData)
 		SleepService.AllSleepData.push(sleepData);
