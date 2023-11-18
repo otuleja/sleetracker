@@ -28,11 +28,6 @@ export class SleepService {
 
 		Preferences.keys().then((data) => {
 			data.keys.forEach(x => {
-				console.log("ley", x)
-
-
-
-
 				Preferences.get({ key: x }).then((result: any) => {
 					var dt = JSON.parse(result.value);
 					console.log("dt", dt)
@@ -41,9 +36,8 @@ export class SleepService {
 						// console.log(temp.sortDate);
 						SleepService.AllSleepData.push(temp);
 					} else {
-						// var tmp = new StanfordSleepinessData(dt.loggedValue, new Date(dt.loggedAt));
-						// console.log(tmp.sortDate);
-						// this.allSleepData.push(tmp);
+						var tmp = new StanfordSleepinessData(dt.loggedValue, new Date(dt.loggedAt));
+						SleepService.AllSleepData.push(tmp);
 					}
 
 				})
@@ -60,7 +54,6 @@ export class SleepService {
 		return SleepService.AllSleepData
 	}
 	public logOvernightData(sleepData: OvernightSleepData) {
-		console.log("adding sleep data", sleepData)
 		SleepService.AllSleepData.push(sleepData);
 		SleepService.AllOvernightData.push(sleepData);
 		Preferences.set({
@@ -80,5 +73,16 @@ export class SleepService {
 		console.log("here in log sleepiness data", sleepData)
 		SleepService.AllSleepData.push(sleepData);
 		SleepService.AllSleepinessData.push(sleepData);
+		Preferences.set({
+			key: sleepData.id, value: JSON.stringify({
+				loggedAt: sleepData.loggedAt.toISOString(),
+				loggedValue: sleepData.loggedValue,
+			})
+		}).then(_ => {
+			console.log("stored data");
+		}).catch(err => {
+			console.log("errrrr", err)
+		});
+
 	}
 }

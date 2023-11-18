@@ -60,8 +60,6 @@ export class HomePage {
 
 	}
 	get allSleepData() {
-		console.log(this.sleepService.getEverything())
-		// return this.sleepService.getEverything();
 		return SleepService.AllSleepData;
 	}
 
